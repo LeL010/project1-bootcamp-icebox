@@ -1,5 +1,6 @@
 import React from "react";
 import IngredientItems from "../../data/ingredientsDatabase";
+import "./ingredients.css";
 
 export class IngredientList extends React.Component {
   constructor(props) {
@@ -8,19 +9,18 @@ export class IngredientList extends React.Component {
     this.state = {
       checked: [],
       checkList: IngredientItems,
-      // checkList: ["Apple", "Banana", "Tea", "Coffee"],
     };
   }
 
   // Add/Remove checked item from list
-  handleCheck = (event) => {
-    var updatedList = [...this.state.checked];
-    if (event.target.checked) {
-      updatedList = [...this.state.checked, event.target.value];
-    } else {
-      updatedList.splice(this.state.checked.indexOf(event.target.value), 1);
-    }
-    this.setState({ checked: updatedList });
+  handleCheck = (item) => {
+    this.setState((prevState) => {
+      const checked = prevState.checked.includes(item)
+        ? prevState.checked.filter((checkedItem) => checkedItem !== item)
+        : [...prevState.checked, item];
+      console.log("Updated checked array:", checked);
+      return { checked };
+    });
   };
 
   // Generate string of checked items
@@ -33,17 +33,16 @@ export class IngredientList extends React.Component {
   };
 
   // Return classes based on whether item is checked
-  isChecked = (item) =>
-    this.state.checked.includes(item) ? "checked-item" : "not-checked-item";
+  isChecked = (item) => {
+    const isChecked = this.state.checked.includes(item);
+    console.log(item, "is checked:", isChecked);
+    return isChecked ? "checked-item" : "not-checked-item";
+  };
 
   // form submit handle
   handleFormSubmit = (formSubmitEvent) => {
     formSubmitEvent.preventDefault();
-    Object.keys(this.state.checked)
-      .filter((checkbox) => this.state.checked[checkbox])
-      .forEach((checkbox) => {
-        console.log(checkbox, "is selected.");
-      });
+    Object.keys(this.state.checked).filter((item) => this.state.checked[item]);
   };
 
   render() {
@@ -51,20 +50,38 @@ export class IngredientList extends React.Component {
       <div className="App">
         <form onSubmit={this.handleFormSubmit}>
           <div className="App-header">
-            <br />
-            <br />
             <h3>Check off what you have in your fridge:</h3>
             <div className="checkList">
-              {this.state.checkList.map((item, index) => (
+              {/* this following code caused a lot of pain and kept rendering "checked-item" regardless. 
+              Guessing that it is the conditional statement that caused it */}
+              {/* {this.state.checkList.map((item, index) => (
                 <div key={index}>
-                  <input
-                    value={item}
-                    type="checkbox"
-                    onChange={this.handleCheck}
-                  />
-                  <span className={this.isChecked(item)}>{item}</span>
+                  <button
+                    className={
+                      this.isChecked(item) ? "checked-item" : "not-checked-item"
+                    }
+                    onClick={() => this.handleCheck(item)}
+                  >
+                    {item}
+                  </button>
                 </div>
-              ))}
+              ))} */}
+              {this.state.checkList.map((item, index) => {
+                const isChecked = this.state.checked.includes(item);
+                const className = isChecked
+                  ? "checked-item"
+                  : "not-checked-item";
+
+                return (
+                  <button
+                    key={index}
+                    className={className}
+                    onClick={() => this.handleCheck(item)}
+                  >
+                    {item}
+                  </button>
+                );
+              })}
             </div>
             <div>{`You have these in your fridge: ${this.checkedItems()}`}</div>
             <br />
