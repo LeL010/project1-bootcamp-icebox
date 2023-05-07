@@ -1,12 +1,13 @@
 import React from "react";
 import "./RecipeList.css";
-import { recipes } from "../../data/recipesDatabase";
+import { useLocation } from "react-router-dom";
 
-function RecipeList() {
+function FilteredRecipesList() {
+  const { state } = useLocation();
   return (
     <div className="container">
       <div className="recipe-list">
-        {recipes.map((recipe) => (
+        {state.map((recipe) => (
           <div className="recipe-box" key={recipe.name}>
             <div className="image-container">
               <img
@@ -41,4 +42,4 @@ function RecipeList() {
   );
 }
 
-export default RecipeList;
+export default FilteredRecipesList;

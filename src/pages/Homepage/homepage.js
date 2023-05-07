@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Button from "react-bootstrap/Button";
 import { Link } from "react-router-dom";
 
-class HomePage extends Component {
+class Homepage extends Component {
   constructor(props) {
     super(props);
     this.handleClick = this.handleClick.bind(this);
@@ -60,10 +60,10 @@ class HomePage extends Component {
   }
 }
 
-class homepage extends React.Component {
+class displayHomepage extends React.Component {
   render() {
     return (
-      <HomePage
+      <Homepage
         backgroundImage="https://img.us.news.samsung.com/us/wp-content/uploads/2018/01/14112220/180108_FH_AKG-Speaker_Full-Shot_w_homescreen_rgb_04.jpg"
         title="What's left in your fridge today?"
         buttonText="Let's take a look!"
@@ -72,4 +72,4 @@ class homepage extends React.Component {
   }
 }
 
-export default homepage;
+export default displayHomepage;
