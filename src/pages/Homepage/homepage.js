@@ -34,6 +34,18 @@ class Homepage extends Component {
     const containerStyle = {
       textAlign: "center",
       color: "#ffffed",
+      position: "relative", // Add position relative to the container
+      fontStyle: "italic"
+    };
+
+    const gifStyle = {
+      position: "absolute", // Position the GIF absolutely within the container
+      top: "calc(50% + 110px)",
+      left: 0,
+      width: "100%",
+      height: "100%",
+      zIndex: 2, // Set a higher z-index than the container
+      opacity: 0.5, // Add transparency to the GIF
     };
 
     return (
@@ -54,6 +66,9 @@ class Homepage extends Component {
           >
             {buttonText}
           </Button>
+          <div style={gifStyle}>
+            <img src="https://tenor.com/en-SG/view/fridge-dissapointed-no-food-my-excitement-for-food-is-now-gone-oh-nevermind-gif-17411460.gif" alt="Disappointed Fridge" />
+          </div>
         </div>
       </div>
     );
