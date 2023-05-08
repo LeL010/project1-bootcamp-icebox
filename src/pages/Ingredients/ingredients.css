@@ -1,7 +1,7 @@
 button {
-  background-color: darkgrey;
+  background-color: grey;
   color: #ffffff;
-  padding: 5px 10px;
+  padding: 5px 5px;
   border-radius: 5px;
 }
 
@@ -36,8 +36,9 @@ button {
   margin-right: 5px;
 }
 
-.flex-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
+.container {
+  padding-top: 40px; /* or any other value that suits your navbar height */
+  padding-bottom: 40px;
+  padding-left: 5px;
+  padding-right: 5px;
 }
