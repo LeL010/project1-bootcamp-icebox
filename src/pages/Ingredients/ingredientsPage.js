@@ -46,51 +46,82 @@ export class IngredientList extends React.Component {
   };
 
   render() {
+    const { checkList, checked } = this.state;
+
     return (
       <div className="App">
         <form onSubmit={this.handleFormSubmit}>
           <div className="App-header">
             <h3>Check off what you have in your fridge:</h3>
+            <br />
             <div className="checkList">
-              {/* this following code caused a lot of pain and kept rendering "checked-item" regardless. 
-              Guessing that it is the conditional statement that caused it */}
-              {/* {this.state.checkList.map((item, index) => (
-                <div key={index}>
-                  <button
-                    className={
-                      this.isChecked(item) ? "checked-item" : "not-checked-item"
-                    }
-                    onClick={() => this.handleCheck(item)}
-                  >
-                    {item}
-                  </button>
-                </div>
-              ))} */}
-              {this.state.checkList.map((item, index) => {
-                const isChecked = this.state.checked.includes(item);
-                const className = isChecked
-                  ? "checked-item"
-                  : "not-checked-item";
-
-                return (
-                  <button
-                    key={index}
-                    className={className}
-                    onClick={() => this.handleCheck(item)}
-                  >
-                    {item}
-                  </button>
-                );
-              })}
+              {checkList.map((item, index) => (
+                <button
+                  key={index}
+                  className={
+                    checked.includes(item) ? "checked-item" : "not-checked-item"
+                  }
+                  onClick={() => this.handleCheck(item)}
+                >
+                  {item}
+                </button>
+              ))}
             </div>
             <div>{`You have these in your fridge: ${this.checkedItems()}`}</div>
             <br />
-            <button type="submit">Save</button>
+            <button type="submit">Save choices</button>
           </div>
         </form>
       </div>
     );
   }
+
+  // render() {
+  //   return (
+  //     <div className="App">
+  //       <form onSubmit={this.handleFormSubmit}>
+  //         <div className="App-header">
+  //           <h3>Check off what you have in your fridge:</h3>
+  //           <div className="checkList">
+  //             {/* this following code caused a lot of pain and kept rendering "checked-item" regardless.
+  //             Guessing that it is the conditional statement that caused it */}
+  //             {/* {this.state.checkList.map((item, index) => (
+  //               <div key={index}>
+  //                 <button
+  //                   className={
+  //                     this.isChecked(item) ? "checked-item" : "not-checked-item"
+  //                   }
+  //                   onClick={() => this.handleCheck(item)}
+  //                 >
+  //                   {item}
+  //                 </button>
+  //               </div>
+  //             ))} */}
+  //             {this.state.checkList.map((item, index) => {
+  //               const isChecked = this.state.checked.includes(item);
+  //               const className = isChecked
+  //                 ? "checked-item"
+  //                 : "not-checked-item";
+
+  //               return (
+  //                 <button
+  //                   key={index}
+  //                   className={className}
+  //                   onClick={() => this.handleCheck(item)}
+  //                 >
+  //                   {item}
+  //                 </button>
+  //               );
+  //             })}
+  //           </div>
+  //           <div>{`You have these in your fridge: ${this.checkedItems()}`}</div>
+  //           <br />
+  //           <button type="submit">Save</button>
+  //         </div>
+  //       </form>
+  //     </div>
+  //   );
+  // }
 }
 
 /*

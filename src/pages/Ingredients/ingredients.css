@@ -35,3 +35,9 @@ button {
   content: "+";
   margin-right: 5px;
 }
+
+.flex-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
