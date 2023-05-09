@@ -1,0 +1,44 @@
+button {
+  background-color: grey;
+  color: #ffffff;
+  padding: 5px 5px;
+  border-radius: 5px;
+}
+
+.checked-item {
+  background-color: #2ecc71;
+  color: white;
+  padding: 5px 5px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.checked-item::before {
+  content: "\2713";
+  /* //Tick emoji */
+  margin-right: 5px;
+}
+
+.not-checked-item {
+  background-color: #3498db;
+  color: white;
+  padding: 5px 5px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.not-checked-item::before {
+  content: "+";
+  margin-right: 5px;
+}
+
+.container {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
