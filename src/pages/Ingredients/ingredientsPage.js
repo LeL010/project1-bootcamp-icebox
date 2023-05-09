@@ -44,7 +44,10 @@ class IngredientList extends React.Component {
     //const UrlParameters = selectedOptions.join("+");
     const filterList = searchRecipes(recipes, selectedOptions);
 
-    this.props.navigate(`/filteredrecipes`, { state: filterList });
+    this.props.navigate(`/filteredrecipes`, {
+      state: { array: filterList, checkedBoxes: selectedOptions },
+    });
+    console.log(selectedOptions);
   };
 
   // Return classes based on whether item is checked

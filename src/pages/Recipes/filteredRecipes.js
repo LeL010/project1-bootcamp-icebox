@@ -1,43 +1,20 @@
-import React from "react";
-import "./RecipeList.css";
+import "../../components/RecipeList.css";
 import { useLocation } from "react-router-dom";
+
+import RecipesDisplay from "../../components/recipelist";
 
 function FilteredRecipesList() {
   const { state } = useLocation();
+  const filterRecipesList = state.array;
+  const inputOptions = state.checkedBoxes;
+
+  const UrlParameters = inputOptions.join(" + ");
+  //console.log(UrlParameters);
+
   return (
-    <div className="container">
-      <div className="recipe-list">
-        {state.map((recipe) => (
-          <div className="recipe-box" key={recipe.name}>
-            <div className="image-container">
-              <img
-                className="recipe-image"
-                src={recipe.image}
-                alt={recipe.name}
-              />
-              <h3 className="recipe-name">{recipe.name}</h3>
-            </div>
-            <div className="recipe-details">
-              <div className="recipe-ingredients">
-                <h4>Ingredients:</h4>
-                <ul>
-                  {recipe.ingredients.map((ingredient, index) => (
-                    <li key={index}>{ingredient}</li>
-                  ))}
-                </ul>
-              </div>
-              <div className="recipe-instructions">
-                <h4>Instructions:</h4>
-                <ol>
-                  {recipe.instructions.map((instruction, index) => (
-                    <li key={index}>{instruction}</li>
-                  ))}
-                </ol>
-              </div>
-            </div>
-          </div>
-        ))}
-      </div>
+    <div className="container mt-5">
+      <h2>Searching recipes related for {UrlParameters} ... </h2>
+      <RecipesDisplay data={filterRecipesList} />
     </div>
   );
 }
