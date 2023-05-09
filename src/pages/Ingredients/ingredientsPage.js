@@ -5,6 +5,7 @@ import { withRouter } from "../../hooks/withRouter";
 
 // import IngredientItems from "./ingredientsList";
 import IngredientItems from "../../data/ingredientsDatabase";
+import "./ingredients.css";
 
 class IngredientList extends React.Component {
   constructor(props) {
@@ -18,14 +19,14 @@ class IngredientList extends React.Component {
   }
 
   // Add/Remove checked item from list
-  handleCheck = (event) => {
-    var updatedList = [...this.state.checked];
-    if (event.target.checked) {
-      updatedList = [...this.state.checked, event.target.value];
-    } else {
-      updatedList.splice(this.state.checked.indexOf(event.target.value), 1);
-    }
-    this.setState({ checked: updatedList });
+  handleCheck = (item) => {
+    this.setState((prevState) => {
+      const checked = prevState.checked.includes(item)
+        ? prevState.checked.filter((checkedItem) => checkedItem !== item)
+        : [...prevState.checked, item];
+      console.log("Updated checked array:", checked);
+      return { checked };
+    });
   };
 
   // Generate string of checked items
@@ -47,32 +48,42 @@ class IngredientList extends React.Component {
   };
 
   // Return classes based on whether item is checked
-  isChecked = (item) =>
-    this.state.checked.includes(item) ? "checked-item" : "not-checked-item";
+  isChecked = (item) => {
+    const isChecked = this.state.checked.includes(item);
+    console.log(item, "is checked:", isChecked);
+    return isChecked ? "checked-item" : "not-checked-item";
+  };
 
   render() {
+    const { checkList, checked } = this.state;
+
     return (
       <div className="App">
         <form onSubmit={this.handleFormSubmit}>
           <div className="App-header">
-            <br />
-            <br />
-            <h3>Check off what you have in your fridge:</h3>
-            <div className="checkList">
-              {this.state.checkList.map((item, index) => (
-                <div key={index}>
-                  <input
-                    value={item}
-                    type="checkbox"
-                    onChange={this.handleCheck}
-                  />
-                  <span className={this.isChecked(item)}>{item}</span>
-                </div>
-              ))}
+            <div className="container">
+              <h3>Check off what you have in your fridge:</h3>
+              <br />
+              <div className="checkList">
+                {checkList.map((item, index) => (
+                  <div
+                    key={index}
+                    className={
+                      checked.includes(item)
+                        ? "checked-item"
+                        : "not-checked-item"
+                    }
+                    onClick={() => this.handleCheck(item)}
+                  >
+                    {item}
+                  </div>
+                ))}
+              </div>
             </div>
-            <div>{`You have these in your fridge: ${this.checkedItems()}`}</div>
+            {`You have these in your fridge: ${this.checkedItems()}`}
             <br />
-            <button type="submit">Save</button>
+            <br />
+            <button type="submit">Submit</button>
           </div>
         </form>
       </div>
