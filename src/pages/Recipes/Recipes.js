@@ -1,5 +1,5 @@
 import "../../components/RecipeList.css";
-import SearchBar from "./searchbar";
+import SearchBar from "./Searchbar";
 
 function RecipeList() {
   return (

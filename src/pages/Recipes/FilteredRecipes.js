@@ -1,7 +1,7 @@
 import "../../components/RecipeList.css";
 import { useLocation } from "react-router-dom";
 
-import RecipesDisplay from "../../components/recipelist";
+import RecipesDisplay from "../../components/Recipelist";
 
 function FilteredRecipesList() {
   const { state } = useLocation();

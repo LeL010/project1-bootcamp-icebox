@@ -1,11 +1,11 @@
 import React from "react";
 import "./App.css";
 import { Route, Routes } from "react-router-dom";
-import Homepage from "./pages/Homepage/homepage";
-import IngredientList from "./pages/Ingredients/ingredientsPage";
-import Recipes from "./pages/Recipes/recipes";
-import Navbar from "./components/navbar";
-import FilteredRecipesList from "./pages/Recipes/filteredRecipes";
+import Homepage from "./pages/Homepage/Homepage";
+import IngredientList from "./pages/Ingredients/IngredientsPage";
+import Recipes from "./pages/Recipes/Recipes";
+import Navbar from "./components/Navbar";
+import FilteredRecipesList from "./pages/Recipes/FilteredRecipes";
 
 class App extends React.Component {
   render() {

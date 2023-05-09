@@ -1,13 +1,14 @@
 import React, { useState } from "react";
 import { recipes } from "../../data/recipesDatabase";
-import Pagination from "../../components/pagination";
+import Pagination from "../../components/Pagination";
 
 function SearchBar() {
   const [state, setstate] = useState({
     query: "",
     list: recipes,
   });
-  const handleChange = (e) => {
+  const HandleChange = (e) => {
+    setCurrentPage(1)
     const results = recipes.filter((recipe) => {
       if (e.target.value === "") {
         return recipes;
@@ -42,7 +43,7 @@ function SearchBar() {
   return (
     <div>
       <form>
-        <input type="search" value={state.query} onChange={handleChange} />
+        <input type="search" value={state.query} onChange={HandleChange} />
       </form>
       <div className="container">
         <div className="recipe-list">
