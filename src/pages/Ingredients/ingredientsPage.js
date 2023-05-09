@@ -1,8 +1,13 @@
 import React from "react";
+import { searchRecipes } from "../../utils/utils";
+import { recipes } from "../../data/recipesDatabase";
+import { withRouter } from "../../hooks/withRouter";
+
+// import IngredientItems from "./ingredientsList";
 import IngredientItems from "../../data/ingredientsDatabase";
 import "./ingredients.css";
 
-export class IngredientList extends React.Component {
+class IngredientList extends React.Component {
   constructor(props) {
     super(props);
     // State with list of all checked item
@@ -10,6 +15,7 @@ export class IngredientList extends React.Component {
       checked: [],
       checkList: IngredientItems,
     };
+    this.handleFormSubmit = this.handleFormSubmit.bind(this);
   }
 
   // Add/Remove checked item from list
@@ -32,17 +38,20 @@ export class IngredientList extends React.Component {
       : "";
   };
 
+  handleFormSubmit = (formSubmitEvent) => {
+    formSubmitEvent.preventDefault();
+    const selectedOptions = this.state.checked;
+    //const UrlParameters = selectedOptions.join("+");
+    const filterList = searchRecipes(recipes, selectedOptions);
+
+    this.props.navigate(`/filteredrecipes`, { state: filterList });
+  };
+
   // Return classes based on whether item is checked
   isChecked = (item) => {
     const isChecked = this.state.checked.includes(item);
     console.log(item, "is checked:", isChecked);
     return isChecked ? "checked-item" : "not-checked-item";
-  };
-
-  // form submit handle
-  handleFormSubmit = (formSubmitEvent) => {
-    formSubmitEvent.preventDefault();
-    Object.keys(this.state.checked).filter((item) => this.state.checked[item]);
   };
 
   render() {
@@ -57,7 +66,7 @@ export class IngredientList extends React.Component {
               <br />
               <div className="checkList">
                 {checkList.map((item, index) => (
-                  <button
+                  <div
                     key={index}
                     className={
                       checked.includes(item)
@@ -67,7 +76,7 @@ export class IngredientList extends React.Component {
                     onClick={() => this.handleCheck(item)}
                   >
                     {item}
-                  </button>
+                  </div>
                 ))}
               </div>
             </div>
@@ -82,14 +91,16 @@ export class IngredientList extends React.Component {
   }
 }
 
+export default withRouter(IngredientList);
+
 /*
 import Checkbox from "../../components/checkbox";
-import {recipes}  from "../../data/recipesDatabase";
+import { recipes } from "../../data/recipesDatabase";
 import { matchResults } from "../../utils/utils";
 
-const OPTIONS = ["One", "Two", "Three"];
+const OPTIONS = ["mushrooms", "guacomolo", "tomatoes", "beef"];
 
-class IngredientsInput extends React.Component {
+class IngredientList extends React.Component {
   state = {
     checkboxes: OPTIONS.reduce(
       (options, option) => ({
@@ -136,8 +147,8 @@ class IngredientsInput extends React.Component {
       .forEach((checkbox) => {
         inputRange.push(checkbox);
       });
-    const output = matchResults(inputRange,recipes)
-    console.log(output)
+    
+    console.log(inputRange);
   };
 
   createCheckbox = (option) => (
@@ -185,7 +196,9 @@ class IngredientsInput extends React.Component {
             </div>
           </div>
         </header>
-
-
-export default IngredientsInput;
+      </div>
+    );
+  }
+}
+export { IngredientList };
 */
