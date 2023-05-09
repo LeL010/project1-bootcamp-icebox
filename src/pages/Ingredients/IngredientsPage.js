@@ -5,7 +5,7 @@ import { withRouter } from "../../hooks/withRouter";
 
 // import IngredientItems from "./ingredientsList";
 import IngredientItems from "../../data/ingredientsDatabase";
-import "./ingredients.css";
+import "./Ingredients.css";
 
 class IngredientList extends React.Component {
   constructor(props) {
