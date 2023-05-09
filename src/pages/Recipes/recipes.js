@@ -14,11 +14,11 @@ function RecipeList() {
                 src={recipe.image}
                 alt={recipe.name}
               />
-              <h3 className="recipe-name">{recipe.name}</h3>
+              <h3 className="recipe-name"><u>{recipe.name}</u></h3>
             </div>
             <div className="recipe-details">
               <div className="recipe-ingredients">
-                <h4>Ingredients:</h4>
+                <h4><u>Ingredients:</u></h4>
                 <ul>
                   {recipe.ingredients.map((ingredient, index) => (
                     <li key={index}>{ingredient}</li>
@@ -26,7 +26,7 @@ function RecipeList() {
                 </ul>
               </div>
               <div className="recipe-instructions">
-                <h4>Instructions:</h4>
+                <h4><u>Instructions:</u></h4>
                 <ol>
                   {recipe.instructions.map((instruction, index) => (
                     <li key={index}>{instruction}</li>
