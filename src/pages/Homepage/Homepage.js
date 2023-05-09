@@ -65,7 +65,7 @@ class Homepage extends Component {
       alignItems: "center",
       overflow: "hidden",
       zIndex: 1,
-      transition: "transform 0.7s ease-in-out", // add a transition effect
+      transition: "transform 1s ease-in-out", // add a transition effect
       transform: isHovering ? "rotateY(-90deg)" : "none", // rotate the door on hover
       transformOrigin: "left", // set the rotation origin to the left side of the door
     };
