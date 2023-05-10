@@ -1,12 +1,16 @@
 button {
-  background-color: grey;
-  color: #ffffff;
-  padding: 5px 5px;
+  text-shadow: none;
+  min-width: min-content;
+}
+.not-checked-item:hover {
+  background: #46494c;
+  color: #fff;
   border-radius: 5px;
+  text-shadow: none;
 }
 
 .checked-item {
-  background-color: #2ecc71;
+  background-color: #93c759;
   color: white;
   padding: 5px 5px;
   border: none;
@@ -22,7 +26,7 @@ button {
 }
 
 .not-checked-item {
-  background-color: #3498db;
+  background-color: #1985a1;
   color: white;
   padding: 5px 5px;
   border: none;
@@ -37,8 +41,103 @@ button {
 }
 
 .container {
-  padding-top: 20px;
-  padding-bottom: 20px;
+  font-family: Poppins, sans-serif;
+  padding-top: 10px;
+  padding-bottom: 10px;
   padding-left: 5px;
   padding-right: 5px;
+}
+.checkList {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 10px;
+  row-gap: 10px;
+}
+
+.checkList > .checked-item {
+  flex-basis: 30%;
+}
+.checkList > .not-checked-item {
+  flex-basis: 30%;
+}
+
+.form-submit-button {
+  width: 200px;
+  font-size: 20px;
+  height: 60px;
+  border: none;
+  outline: none;
+  color: #fff;
+  cursor: pointer;
+  position: relative;
+  z-index: 0;
+  border-radius: 10px;
+}
+
+.form-submit-button::before {
+  position: absolute;
+  content: "";
+  width: calc(100% + 4px);
+  height: calc(100% + 4px);
+  left: -2px;
+  top: -2px;
+  background: linear-gradient(
+    124deg,
+    #ff2400,
+    #e81d1d,
+    #e8b71d,
+    #e3e81d,
+    #1de840,
+    #1ddde8,
+    #2b1de8,
+    #dd00f3,
+    #dd00f3
+  );
+  background-size: 400%;
+  z-index: -1;
+  filter: blur(5px);
+  animation: move 20s linear infinite;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+  border-radius: 10px;
+}
+
+.form-submit-button:hover::before {
+  opacity: 1;
+}
+
+.form-submit-button::after {
+  z-index: -1;
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #46494c;
+  left: 0;
+  top: 0;
+  border-radius: 10px;
+}
+
+@keyframes move {
+  0% {
+    background-position: 0 0;
+  }
+  50% {
+    background-position: 400% 0;
+  }
+  100% {
+    background-position: 0 0;
+  }
+}
+
+.ingredients-header {
+  font-family: Poppins, sans-serif;
+  background-color: #dfecf0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(6px + 2vmin);
+  color: #46494c;
 }

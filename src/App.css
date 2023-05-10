@@ -17,15 +17,3 @@
   font-size: calc(10px + 2vmin);
   color: white;
 }
-
-.checkList {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  column-gap: 20px;
-  row-gap: 10px;
-}
-
-.checkList > div {
-  flex-basis: 30%;
-}
