@@ -61,36 +61,37 @@ class IngredientList extends React.Component {
     const { checkList, checked } = this.state;
 
     return (
-      <div className="App">
-        <form onSubmit={this.handleFormSubmit}>
-          <div className="App-header">
+      <form onSubmit={this.handleFormSubmit}>
+        <div className="ingredients-header">
+          <div className="container">
             <div className="container">
-              <h3>Check off what you have in your fridge:</h3>
-              <br />
-              <div className="checkList">
-                {checkList.map((item, index) => (
-                  <button
-                  type="button"
-                    key={index}
-                    className={
-                      checked.includes(item)
-                        ? "checked-item"
-                        : "not-checked-item"
-                    }
-                    onClick={() => this.handleCheck(item)}
-                  >
-                    {item}
-                  </button>
-                ))}
-              </div>
+              <b>Check off what you have in your fridge below</b>
             </div>
-            {`You have these in your fridge: ${this.checkedItems()}`}
-            <br />
-            <br />
-            <button type="submit">Submit</button>
+            <div className="checkList">
+              {checkList.map((item, index) => (
+                <button
+                  type="button"
+                  key={index}
+                  className={
+                    checked.includes(item) ? "checked-item" : "not-checked-item"
+                  }
+                  onClick={() => this.handleCheck(item)}
+                >
+                  {item}
+                </button>
+              ))}
+            </div>
           </div>
-        </form>
-      </div>
+          <div className="container">
+            You have these in your fridge: <br /> {this.checkedItems()}
+          </div>
+          <br />
+          <button type="submit" className="form-submit-button">
+            Submit
+          </button>
+          <br />
+        </div>
+      </form>
     );
   }
 }
