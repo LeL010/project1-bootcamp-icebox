@@ -69,7 +69,8 @@ class IngredientList extends React.Component {
               <br />
               <div className="checkList">
                 {checkList.map((item, index) => (
-                  <div
+                  <button
+                  type="button"
                     key={index}
                     className={
                       checked.includes(item)
@@ -79,7 +80,7 @@ class IngredientList extends React.Component {
                     onClick={() => this.handleCheck(item)}
                   >
                     {item}
-                  </div>
+                  </button>
                 ))}
               </div>
             </div>
