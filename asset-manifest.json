@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/icebox/static/css/main.bb24053d.css",
-    "main.js": "/icebox/static/js/main.e014af78.js",
-    "static/media/front-door.png": "/icebox/static/media/front-door.142cdbf0f20d32602869.png",
-    "static/media/back-door.png": "/icebox/static/media/back-door.d9640587f2dcae9acd3d.png",
-    "static/media/logo.png": "/icebox/static/media/logo.e54ce6ab620f8c7135f3.png",
-    "index.html": "/icebox/index.html",
-    "main.bb24053d.css.map": "/icebox/static/css/main.bb24053d.css.map",
-    "main.e014af78.js.map": "/icebox/static/js/main.e014af78.js.map"
+    "main.css": "/project1-bootcamp-icebox/static/css/main.3d82c0b4.css",
+    "main.js": "/project1-bootcamp-icebox/static/js/main.9578f743.js",
+    "static/media/front-door.png": "/project1-bootcamp-icebox/static/media/front-door.142cdbf0f20d32602869.png",
+    "static/media/back-door.png": "/project1-bootcamp-icebox/static/media/back-door.d9640587f2dcae9acd3d.png",
+    "static/media/logo.png": "/project1-bootcamp-icebox/static/media/logo.e54ce6ab620f8c7135f3.png",
+    "index.html": "/project1-bootcamp-icebox/index.html",
+    "main.3d82c0b4.css.map": "/project1-bootcamp-icebox/static/css/main.3d82c0b4.css.map",
+    "main.9578f743.js.map": "/project1-bootcamp-icebox/static/js/main.9578f743.js.map"
   },
   "entrypoints": [
-    "static/css/main.bb24053d.css",
-    "static/js/main.e014af78.js"
+    "static/css/main.3d82c0b4.css",
+    "static/js/main.9578f743.js"
   ]
 }
