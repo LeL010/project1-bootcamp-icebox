@@ -8,7 +8,7 @@ function SearchBar() {
     list: recipes,
   });
   const HandleChange = (e) => {
-    setCurrentPage(1)
+    setCurrentPage(1);
     const results = recipes.filter((recipe) => {
       if (e.target.value === "") {
         return recipes;
@@ -20,7 +20,7 @@ function SearchBar() {
     setstate({
       query: e.target.value,
       list: results,
-      start: true
+      start: true,
     });
   };
 
@@ -42,8 +42,14 @@ function SearchBar() {
 
   return (
     <div>
-      <form>
-        <input type="search" value={state.query} onChange={HandleChange} />
+      <form class="form-inline my-2 my-lg-0">
+        <input
+          class="form-control mr-sm-2"
+          placeholder="Search recipes here ...."
+          type="search"
+          value={state.query}
+          onChange={HandleChange}
+        />
       </form>
       <div className="container">
         <div className="recipe-list">

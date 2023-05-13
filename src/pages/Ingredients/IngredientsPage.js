@@ -83,12 +83,13 @@ class IngredientList extends React.Component {
             </div>
           </div>
           <div className="container">
-            {`You have these in your fridge: ${this.checkedItems()}`}
+            You have these in your fridge: <br /> {this.checkedItems()}
           </div>
           <br />
           <button type="submit" className="form-submit-button">
             Submit
           </button>
+          <br />
         </div>
       </form>
     );
